@@ -1,12 +1,13 @@
+require('dotenv').config();
 const axios = require('axios');
 const argv = process.argv;
 
 const claps = 50;
 const endpoint = "https://medium.com/_/graphql";
-const cookie = "_ga=GA1.2.1770823718.1573282440; optimizelyEndUserId=lo_9f6f9ba4cce5; nonce=ZUlC6e4c; uid=ab081a530bc5; sid=1:jyv3sPqz2SPItmk5Plg5Sz5aHrOHFjC/fuKHZRRk/yGf+Q9YF5iE0l2lwsT2EDFy; __cfruid=d18232d3ddeea4e86ab5e21489304c8bc9841e2b-1674656888; _gid=GA1.2.1379610889.1674656893; xsrf=14d995e8073b; _dd_s=rum=0&expire=1674770249701; _gat=1;"
+const cookie = process.env.MEDIUM_COOKIE;
+const userId = process.env.USER_ID;
 
 let postId = argv[argv.length-1];
-let userId = argv[argv.length-2];
 
 if (postId.indexOf("http") > -1 || postId.indexOf("archway.io") > -1) {
   let pieces = postId.split("-");
